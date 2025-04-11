@@ -1,0 +1,1 @@
+en az yemek yeme suresine gore program bitmiyor bir hata var

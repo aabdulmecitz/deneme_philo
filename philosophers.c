@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:24:23 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/04/11 21:34:33 by aozkaya          ###   ########.fr       */
+/*   Updated: 2025/04/11 22:20:24 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static int	check_meals(t_data *data)
 	while (i < data->num_philosophers)
 	{
 		if (get_meal(data) > 0 && \
-			data->philosophers[i].meals_eaten < get_meal(data))
+			data->philosophers[i].meals_eaten != get_meal(data))
 			all_ate_enough = 0;
 		i++;
 	}

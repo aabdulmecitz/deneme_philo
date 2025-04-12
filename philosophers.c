@@ -6,7 +6,7 @@
 /*   By: aozkaya <aozkaya@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 04:24:23 by aozkaya           #+#    #+#             */
-/*   Updated: 2025/04/11 22:20:24 by aozkaya          ###   ########.fr       */
+/*   Updated: 2025/04/12 22:38:38 by aozkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	*philo_routine(void *arg)
 static int	check_death(t_data *data, int i, long current_time)
 {
 	pthread_mutex_lock(&data->print_lock);
-	if ((current_time - data->philosophers[i].last_meal_time) > data->time_to_die || get_meal(data) == 0)
+	if ((current_time
+			- data->philosophers[i].last_meal_time) > data->time_to_die)
 	{
 		printf(RED "%ld %d died\n" RESET, \
 			current_time - data->start_time, data->philosophers[i].id);
@@ -84,7 +85,7 @@ static int	check_meals(t_data *data)
 	while (i < data->num_philosophers)
 	{
 		if (get_meal(data) > 0 && \
-			data->philosophers[i].meals_eaten != get_meal(data))
+			data->philosophers[i].meals_eaten < get_meal(data))
 			all_ate_enough = 0;
 		i++;
 	}
